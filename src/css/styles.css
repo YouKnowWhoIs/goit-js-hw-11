@@ -38,5 +38,41 @@ img {
 /* стилі */
 
 .form {
-  padding: 0 auto;
+  margin: 20px auto;
+  text-align: center;
+}
+
+input {
+  border-radius: 4px;
+  padding-left: 16px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  height: 40px;
+  width: 272px;
+  background-color: #fff;
+}
+input:active {
+  border-color: #4e75ff;
+}
+input:hover {
+  border-color: black;
+}
+
+button {
+  background-color: #4e75ff;
+  margin-left: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 91px;
+  color: #fff;
+}
+button:hover {
+  background-color: #6c8cff;
+}
+
+.gallery-item {
+  border: 1px solid #808080;
+  width: 360px;
 }
