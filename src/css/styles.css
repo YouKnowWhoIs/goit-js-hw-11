@@ -31,8 +31,8 @@ button {
 
 img {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 240px;
 }
 
 /* стилі */
@@ -72,7 +72,35 @@ button:hover {
   background-color: #6c8cff;
 }
 
+.gallery {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 25px;
+  row-gap: 25px;
+  padding: 0 10px;
+}
+
 .gallery-item {
   border: 1px solid #808080;
-  width: 360px;
+  width: 350px;
+  height: 300px;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: row;
+  margin: 6px 10px;
+  gap: 20px;
+}
+
+.item-text ul {
+  font-weight: 600;
+  color: #2e2f42;
+}
+
+.item-text li {
+  font-weight: 400;
+  color: #2e2f42;
 }
