@@ -8,6 +8,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const form = document.querySelector('.form');
 const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 
 form.addEventListener('submit', onCreateFormSubmit);
 
@@ -21,6 +22,8 @@ function onCreateFormSubmit(event) {
       position: 'topRight',
     });
   }
+
+  loader.style.display = 'inline-block';
 
   fetchImages(nameImage);
   event.target.reset();
@@ -55,12 +58,27 @@ function fetchImages(nameImage) {
     })
     .catch(error => {
       console.error('Error:', error);
+    })
+    .finally(() => {
+      loader.style.display = 'none';
     });
 }
 
 function renderTicker(data) {
   const markup = data.hits.map(templateImage).join('');
   gallery.innerHTML = markup;
+
+  const galleryLinks = document.querySelectorAll('.gallery-link');
+  galleryLinks.forEach(link => {
+    link.setAttribute('href', link.querySelector('img').getAttribute('src'));
+  });
+
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+
+  lightbox.refresh();
 }
 
 function templateImage({
@@ -77,7 +95,6 @@ function templateImage({
       <img
         class="gallery-image"
         src="${webformatURL}"
-        data-source="${largeImageURL}"
         alt="${tags}"
       />
     </a>
@@ -89,8 +106,3 @@ function templateImage({
     </div>
   </li>`;
 }
-
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
